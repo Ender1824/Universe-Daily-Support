@@ -7,39 +7,109 @@
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #0b0c10;
-      color: #f5f5f5;
       margin: 0;
       padding: 2rem;
       line-height: 1.6;
+      color: #f5f5f5;
+
+      /* Background: APOD with fallback gradient */
+      background: url("https://apod.nasa.gov/apod/image/2402/aurora_polarlicht.jpg") no-repeat center center fixed,
+                  linear-gradient(to bottom, #0b0c10, #000);
+      background-size: cover;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    /* Northern lights overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(180deg,
+        rgba(46, 139, 87, 0.3) 0%,
+        rgba(0, 128, 128, 0.25) 40%,
+        rgba(25, 25, 112, 0.35) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Twinkling stars effect */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 200%;
+      height: 200%;
+      background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+      animation: drift 180s linear infinite;
+      opacity: 0.35;
+      z-index: 0;
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(-500px, -1000px); }
+    }
+
     h1 {
-      color: #66fcf1;
+      color: #8ecdfc;
+      text-align: center;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #2a9df4, 0 0 20px #1f6feb;
+      z-index: 1;
+      position: relative;
     }
+
     a {
-      color: #45a29e;
+      color: #7ee0ff;
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
+      color: #c3f0ff;
     }
+
     .container {
-      max-width: 700px;
+      max-width: 800px;
       margin: auto;
+      position: relative;
+      z-index: 1;
     }
+
     .card {
-      background: #1f2833;
+      background: rgba(18, 24, 38, 0.88);
       padding: 1.5rem;
-      border-radius: 12px;
+      border-radius: 15px;
       margin-bottom: 1.5rem;
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.25);
+      border: 1px solid rgba(0, 191, 255, 0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    h2 {
+      color: #66fcf1;
+      text-shadow: 0 0 8px rgba(102, 252, 241, 0.5);
+    }
+
+    strong {
+      color: #ffd166;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      position: relative;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Universe Daily – Support</h1>
+    <h1>🚀 Universe Daily – Support</h1>
+    
     <div class="card">
-      <p>Thank you for using <strong>Universe Daily</strong>! We’re here to help.</p>
+      <p>Thank you for using <strong>Universe Daily</strong>! We’re here to help you explore the cosmos.</p>
       <p>If you have any questions, run into issues, or want to suggest features, please reach out:</p>
       <ul>
         <li>Email: <a href="mailto:Universe@kportal.net">Universe@kportal.net</a></li>
@@ -50,19 +120,24 @@
         </li>
       </ul>
     </div>
+
     <div class="card">
-      <h2>FAQ</h2>
+      <h2>🌌 FAQ</h2>
       <p><strong>Q:</strong> Does Universe Daily collect my data?<br>
          <strong>A:</strong> No. Universe Daily does not collect or store any personal information. See our 
          <a href="https://gist.github.com/Ender1824/3848d5415631585d6bb22ae991cee308" target="_blank">Privacy Policy</a>.
       </p>
     </div>
+
     <div class="card">
-      <h2>App Information</h2>
-      <p>Version: 1.0<br>
+      <h2>🛰 App Information</h2>
       Platform: iOS<br>
       Developer: Universe Daily</p>
     </div>
+
+    <footer>
+      © 2025 Kportal 
+    </footer>
   </div>
 </body>
 </html>
